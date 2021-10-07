@@ -1,23 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CheckinController;
+use App\Http\Controllers\CheckoutController;
 
 // Route untuk pendaftaran pelawat
 Route::get('/', function () {
     return view('welcome');
 })->name('utama');
 
-Route::get('/checkin', function () {
-    return view('template-checkin');
-})->name('checkin');
+Route::get('/checkin', [CheckinController::class, 'borangCheckin'])->name('checkin');
+Route::post('/checkin', [CheckinController::class, 'checkCheckin'])->name('checkin.check');
 
-Route::get('/checkout', function () {
-    return view('template-checkout');
-})->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'borangCheckout'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'checkCheckout'])->name('checkout.check');
 
-Route::get('/login', function () {
-    return view('authentication.template-login');
-})->name('login');
+Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'checkLogin'])->name('login.check');
+
 
 Route::get('/admin/users', function() {
 
