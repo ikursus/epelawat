@@ -11,8 +11,10 @@ class CheckoutController extends Controller
         return view('template-checkout');
     }
 
-    public function checkCheckout()
+    public function checkCheckout(Request $request)
     {
-        // Kod untuk terima data dari borang
+        $data = $request->all();
+
+        dd($data);
     }
 }

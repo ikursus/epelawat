@@ -20,14 +20,24 @@
     <div class="card">
         <div class="card-body">
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="mb-3">
                 <label for="mykad" class="form-label">No. Kad Pengenalan</label>
-                <input type="text" name="mykad" class="form-control">
+                <input type="text" name="mykad" class="form-control" required>
             </div>
 
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
-                <input type="text" name="nama" class="form-control">
+                <input type="text" name="nama" class="form-control" required>
             </div>
 
             <div class="mb-3">
@@ -51,7 +61,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="no_telefon" class="form-label">Aktiviti</label>
+                <label for="aktiviti" class="form-label">Aktiviti</label>
                 <textarea name="aktiviti" class="form-control"></textarea>
             </div>
 

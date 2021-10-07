@@ -14,6 +14,8 @@ Route::get('/', function () {
 Route::get('/checkin', [CheckinController::class, 'borangCheckin'])->name('checkin');
 Route::post('/checkin', [CheckinController::class, 'checkCheckin'])->name('checkin.check');
 
+// Challenge 2
+// Dapatkan dan Paparkan data daripada borang checkout
 Route::get('/checkout', [CheckoutController::class, 'borangCheckout'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'checkCheckout'])->name('checkout.check');
 

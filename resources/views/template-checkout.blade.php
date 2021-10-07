@@ -16,7 +16,7 @@
 <div class="col-md-6">
 
     <form method="POST" action="{{ route('checkout.check') }}">
-
+        @csrf
     <div class="card">
         <div class="card-body">
 
