@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -13,8 +14,33 @@ class CheckoutController extends Controller
 
     public function checkCheckout(Request $request)
     {
-        $data = $request->all();
+        $request->validate([
+            'mykad' => ['required', 'numeric']
+        ]);
 
-        dd($data);
+        $rekodVisitor = DB::table('visitors')
+        ->where('mykad', '=', $request->input('mykad'))
+        ->whereDate('waktu_masuk', now())
+        ->first();
+
+        // Jika $rekodVisitor tidak kosong / null
+        if (!is_null($rekodVisitor))
+        {
+            // $rekodVisitor->update([
+            //     'waktu_keluar' => now()
+            // ]);
+
+            $waktuCheckout = now();
+            DB::table('visitors')
+            ->where('mykad', '=', $request->input('mykad'))
+            ->whereDate('waktu_masuk', now())
+            ->update(['waktu_keluar' => $waktuCheckout]);
+
+            return redirect()->route('utama')
+            ->with('mesej-sukses', 'Anda berjaya check out pada ' . $waktuCheckout);
+        }
+
+        return back()->withErrors('Tiada rekod dijumpai');
+
     }
 }

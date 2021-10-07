@@ -20,6 +20,8 @@
     <div class="card">
         <div class="card-body">
 
+            @include('layouts.alerts')
+
             <div class="mb-3">
                 <label for="mykad" class="form-label">No. Kad Pengenalan</label>
                 <input type="text" name="mykad" class="form-control">

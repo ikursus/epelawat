@@ -16,9 +16,11 @@
 <div class="col-md-6">
 
     <form method="POST" action="{{ route('login.check') }}">
-
+        @csrf
     <div class="card">
         <div class="card-body">
+
+            @include('layouts.alerts')
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>

@@ -38,6 +38,7 @@ class CheckinController extends Controller
         DB::table('visitors')->insert($data);
 
         // Response
-        return 'Sukses!';
+        return redirect()->route('utama')
+        ->with('mesej-sukses', 'Anda berjaya check-in pada ' . $data['waktu_masuk']);
     }
 }

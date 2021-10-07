@@ -15,6 +15,7 @@
         }
     </style>
     @yield('css_custom')
+
   </head>
   <body>
       <div class="container">
