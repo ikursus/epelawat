@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckinController;
@@ -19,28 +20,8 @@ Route::post('/checkout', [CheckoutController::class, 'checkCheckout'])->name('ch
 Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'checkLogin'])->name('login.check');
 
-
-Route::get('/admin/users', function() {
-
-    $tajukHalaman = '<input type="text" value="Senarai Users">';
-
-    $senaraiUsers = [
-        ['id' => 1, 'nama' => 'Ali', 'email' => 'ali@gmail.com'],
-        ['id' => 2, 'nama' => 'Lee', 'email' => 'lee@gmail.com'],
-        ['id' => 3, 'nama' => 'Siti', 'email' => 'siti@gmail.com'],
-    ];
-
-    // Cara 1 Untuk Passkan Data Dari Variable $senaraiUsers
-    // return view('admin.users.senarai')
-    // ->with('senaraiUsers', $senaraiUsers)
-    // ->with('tajukHalaman', $tajukHalaman);
-
-    // Cara 2 Untuk Passkan Data Dari Variable $senaraiUsers
-    // return view('admin.users.senarai', [
-    //     'senaraiUsers' => $senaraiUsers,
-    //     'tajukHalaman' => $tajukHalaman
-    // ]);
-
-    // Cara 3 Untuk Passkan Data Dari Variable $senaraiUsers
-    return view('admin.users.senarai', compact('senaraiUsers', 'tajukHalaman'));
-});
+// Quiz Pantas / Challenge
+// Buat 1 Controller Bernama UserController dan
+// pastikan dia berada di dalam folder app/Http/Controllers/Admin/
+// Pindahkan function ke dalam UserController
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');

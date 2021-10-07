@@ -11,8 +11,14 @@ class CheckinController extends Controller
         return view('template-checkin');
     }
 
-    public function checkCheckin()
+    public function checkCheckin(Request $request)
     {
-        // Kod untuk terima data dari borang
+        // $data = $request->all();
+        // $data = $request->only(['mykad', 'nama']);
+        // $data = $request->except(['nama', 'jabatan']);
+        $data = $request->input('nama'); // $request->nama;
+
+        // Die and Dump
+        dd($data);
     }
 }
