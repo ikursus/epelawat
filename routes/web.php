@@ -21,7 +21,7 @@ Route::get('/login', function () {
 
 Route::get('/admin/users', function() {
 
-    $tajukHalaman = 'Senarai Users';
+    $tajukHalaman = '<input type="text" value="Senarai Users">';
 
     $senaraiUsers = [
         ['id' => 1, 'nama' => 'Ali', 'email' => 'ali@gmail.com'],

@@ -14,49 +14,14 @@
             padding-top: 50px;
         }
     </style>
+    @yield('css_custom')
   </head>
   <body>
       <div class="container">
 
-        <div class="row mb-5">
-            <div class="col-12">
-                <h1 class="text-center"><?php echo $tajukHalaman; ?></h1>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-12">
-
-                <table class="table table-bordered">
-
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NAMA</th>
-                            <th>EMAIL</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php
-                        foreach ($senaraiUsers as $user):
-                        ?>
-                        <tr>
-                            <td><?php echo $user['id']; ?></td>
-                            <td><?php echo $user['nama']; ?></td>
-                            <td><?php echo $user['email']; ?></td>
-                        </tr>
-                        <?php
-                        endforeach;
-                        ?>
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
+        <!-- Permulaan Content -->
+        @yield('content')
+        <!-- Penutup Content -->
 
         <div class="row mt-5">
             <div class="col-12">
