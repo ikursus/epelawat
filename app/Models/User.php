@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mykad',
+        'roles',
+        'gambar'
     ];
 
     /**
@@ -41,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relation diantara user kepada profile (one to one)
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+        // user_id
+        // return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
 }

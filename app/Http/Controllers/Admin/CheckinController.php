@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -16,13 +18,24 @@ class CheckinController extends Controller
      */
     public function index()
     {
-        $checkIn = DB::table('visitors')
-        ->whereNull('waktu_keluar')
-        ->whereDate('waktu_masuk', now()) // Carbon::now();
-        ->orderBy('id', 'desc')
-        ->paginate(15);
+        // $checkIn = DB::table('visitors')
+        // ->whereNull('waktu_keluar')
+        // ->orderBy('id', 'desc')
+        // ->paginate(15);
 
-        return view('admin.checkin.template-index', compact('checkIn'));
+        // return view('admin.checkin.template-index', compact('checkIn'));
+        return view('admin.checkin.template-index');
+    }
+
+    public function datatables()
+    {
+        $query = Visitor::query();
+
+        return DataTables::of($query)
+        ->addColumn('tindakan', function () {
+            'button';
+        })
+        ->make(true);
     }
 
     /**

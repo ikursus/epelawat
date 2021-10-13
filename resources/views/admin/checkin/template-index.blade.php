@@ -1,5 +1,34 @@
 @extends('layouts.induk')
 
+@section('css-custom')
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+
+@endsection
+
+@push('js-custom')
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(function() {
+        $('#datatables-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('admin.checkin.datatables') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'nama', name: 'nama' },
+                { data: 'mykad', name: 'mykad' },
+                { data: 'jabatan', name: 'jabatan' },
+                { data: 'pegawai_pengiring', name: 'pegawai_pengiring' },
+                { data: 'waktu_masuk', name: 'waktu_masuk' },
+                { data: 'tindakan', name: 'tindakan', orderable: false, searchable: false }
+            ]
+        });
+    });
+</script>
+@endpush
+
 @section('page-content')
 
     <!-- Page Heading -->
@@ -37,7 +66,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
 
-                    <table class="table table-sm table-bordered">
+                    <table class="table table-sm table-bordered" id="datatables-table">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -49,7 +78,7 @@
                                 <th>Tindakan</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($checkIn as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -99,12 +128,8 @@
                                 </td>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
-
-                    Jumlah Rekod {!! $checkIn->total() !!}
-
-                    {!! $checkIn->links() !!}
 
                 </div>
 
