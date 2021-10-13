@@ -1,71 +1,42 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.induk-guest')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+@section('page-content')
 
-    <title>{{ config('app.name') }}</title>
-    <style>
-        body {
-            padding-top: 50px;
-        }
-    </style>
-  </head>
-  <body>
-      <div class="container">
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Selamat Datang Ke {{ config('app.name') }}</h1>
+</div>
 
-        <div class="row mb-5">
-            <div class="col-12">
-                <h1 class="text-center">Selamat Datang ke e-Pelawat</h1>
-            </div>
+@include('layouts.alerts')
+
+<div class="row">
+
+    <div class="col-md-3 offset-3 text-center">
+        <div class="d-grid gap-2">
+            <a href="{{ route('checkin') }}" class="btn btn-lg btn-primary">Check In</a>
         </div>
-
-        @include('layouts.alerts')
-
-        <div class="row">
-
-        <div class="col-md-3">
-
-        </div>
-
-        <div class="col-md-3 text-center">
-            <div class="d-grid gap-2">
-                <a href="{{ route('checkin') }}" class="btn btn-lg btn-primary">Check In</a>
-            </div>
-        </div>
-        <div class="col-md-3 text-center">
-            <div class="d-grid gap-2">
-                <a href="{{ route('checkout') }}" class="btn btn-lg btn-warning">Check Out</a>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-
-        </div>
-
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-12">
-                <p class="text-center">{{ config('epelawat.copyright_notice') }}</p>
-            </div>
+    </div>
+    <div class="col-md-3 text-center">
+        <div class="d-grid gap-2">
+            <a href="{{ route('checkout') }}" class="btn btn-lg btn-warning">Check Out</a>
         </div>
     </div>
 
+</div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+<hr>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+<div class="row pt-5">
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+    <div class="col-12 text-center">
+        <a href="{{ route('login') }}">Login e-Pelawat</a>
+    </div>
+
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <p class="text-center">{{ config('epelawat.copyright_notice') }}</p>
+    </div>
+</div>
+
+@endsection

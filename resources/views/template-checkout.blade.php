@@ -1,43 +1,25 @@
-@extends('layouts.induk')
+@extends('layouts.induk-guest')
 
-@section('content')
-<div class="row mb-5">
-    <div class="col-12">
-        <h1 class="text-center">Check Out</h1>
-    </div>
+@section('page-content')
+
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Check Out {{ config('app.name') }}</h1>
 </div>
 
-<div class="row">
+<form method="POST" action="{{ route('checkout.check') }}">
+@csrf
 
-<div class="col-md-3">
+@include('layouts.alerts')
 
+<div class="mb-3">
+    <label for="mykad" class="form-label">No. Kad Pengenalan</label>
+    <input type="text" name="mykad" class="form-control">
 </div>
 
-<div class="col-md-6">
+<a href="{{ route('utama') }}" class="btn btn-info">Kembali</a>
+<button type="submit" class="btn btn-primary">Check Out</button>
 
-    <form method="POST" action="{{ route('checkout.check') }}">
-        @csrf
-    <div class="card">
-        <div class="card-body">
+</form>
 
-            @include('layouts.alerts')
 
-            <div class="mb-3">
-                <label for="mykad" class="form-label">No. Kad Pengenalan</label>
-                <input type="text" name="mykad" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </div>
-    </div>
-
-    </form>
-
-</div>
-
-<div class="col-md-3">
-
-</div>
-</div>
 @endsection
