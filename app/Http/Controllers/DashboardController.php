@@ -11,12 +11,14 @@ class DashboardController extends Controller
     {
         $checkIn = DB::table('visitors')
         ->whereNull('waktu_keluar')
+        ->whereDate('waktu_masuk', now()) // Carbon::now();
         ->orderBy('id', 'desc')
         ->limit(10)
         ->get();
 
         $checkOut = DB::table('visitors')
         ->whereNotNull('waktu_keluar')
+        ->whereDate('waktu_masuk', now()) // Carbon::now();
         ->orderBy('id', 'desc')
         ->limit(10)
         ->get();

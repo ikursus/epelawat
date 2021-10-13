@@ -43,7 +43,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    @include('layouts.alerts')
                     @yield('page-content')
 
                 </div>

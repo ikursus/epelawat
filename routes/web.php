@@ -24,6 +24,7 @@ Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'checkLogin'])->name('login.check');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Quiz Pantas / Challenge
@@ -31,3 +32,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // pastikan dia berada di dalam folder app/Http/Controllers/Admin/
 // Pindahkan function ke dalam UserController
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::resource('/admin/checkin', \App\Http\Controllers\Admin\CheckinController::class)->except(['create', 'store']);
+// Route::resource('/admin/checkin', \App\Http\Controllers\Admin\CheckinController::class)->only(['index', 'edit', 'update', 'destroy']);
+// Route::get('/admin/checkout', [\App\Http\Controllers\Admin\CheckoutController::class, 'index'])->name('admin.users.index');

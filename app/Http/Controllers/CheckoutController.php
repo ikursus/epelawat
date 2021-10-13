@@ -31,10 +31,13 @@ class CheckoutController extends Controller
             // ]);
 
             $waktuCheckout = now();
+
             DB::table('visitors')
             ->where('mykad', '=', $request->input('mykad'))
             ->whereDate('waktu_masuk', now())
             ->update(['waktu_keluar' => $waktuCheckout]);
+
+            //CRUD
 
             return redirect()->route('utama')
             ->with('mesej-sukses', 'Anda berjaya check out pada ' . $waktuCheckout);
